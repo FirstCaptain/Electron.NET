@@ -68,12 +68,12 @@ app.on('ready', () => {
     if (manifestJsonFile.electronPort) {
         defaultElectronPort = (manifestJsonFile.electronPort)
     }
+  
     // hostname needs to be localhost, otherwise Windows Firewall will be triggered.
     portscanner.findAPortNotInUse(defaultElectronPort, 65535, 'localhost', function (error, port) {
         console.log('Electron Socket IO Port: ' + port);
         startSocketApiBridge(port);
     });
-
 });
 
 app.on('quit', async (event, exitCode) => {
